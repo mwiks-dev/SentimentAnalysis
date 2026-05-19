@@ -141,5 +141,5 @@ def update_chart(n_clicks, text_value):
     return fig
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT", 8050))
     server.run(debug=False, port=port, host='0.0.0.0')
