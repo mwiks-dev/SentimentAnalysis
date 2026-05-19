@@ -7,13 +7,7 @@ from flask import Flask, request, jsonify
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-
-try:
-    nltk.data.find('sentiment/vader_lexicon.zip')
-except nltk.downloader.DownloadError:
-    print("Downloading VADER lexicon...")
-    nltk.download('vader_lexicon')
-    print("Download complete.")
+nltk.download("vader_lexicon", quiet=True)
 
 sia = SentimentIntensityAnalyzer()
 
