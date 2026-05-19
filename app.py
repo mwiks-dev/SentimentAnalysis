@@ -45,7 +45,7 @@ def analyze_sentiment_api():
     sentiment_scores = get_sentiment(text_to_analyze)
     return jsonify(sentiment_scores)
 
-app = dash.Dash(__name__, server=server, url_base_pathname='/dashboard/')
+app = dash.Dash(__name__, server=server, routes_pathname_prefix='/dashboard/')
 
 app.layout = html.Div(style={'fontFamily': 'Arial, sans-serif', 'maxWidth': '800px', 'margin': 'auto', 'padding': '20px', 'backgroundColor': '#f9f9f9', 'borderRadius': '8px', 'boxShadow': '0 2px 4px rgba(0,0,0,0.1)'}, children=[
     html.H1(
@@ -141,5 +141,8 @@ def update_chart(n_clicks, text_value):
     return fig
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 8050))
-    server.run(debug=False, port=port, host='0.0.0.0')
+    app.run(
+        host = '0.0.0.0',
+        port=int(os.environ.get('PORT',10000)),
+        debug=False
+    )
